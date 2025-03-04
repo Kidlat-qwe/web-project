@@ -15,7 +15,12 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
   
   // Update API_URL to match server port
-  const API_BASE_URL = 'http://localhost:8000';
+  const API_URL = process.env.REACT_APP_API_URL;
+
+fetch(`${API_URL}/api/your-endpoint`)
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
